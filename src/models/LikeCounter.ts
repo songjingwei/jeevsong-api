@@ -1,3 +1,5 @@
+import { DurableObject, DurableObjectState } from 'cloudflare:workers'
+
 class LikeCounter extends DurableObject {
   // In-memory state
   value = 0
