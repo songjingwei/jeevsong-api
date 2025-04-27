@@ -15,7 +15,7 @@ counter.get('/', async (c) => {
   })
 })
 
-counter.post('/counter/increment', async (c) => {
+counter.post('/increment', async (c) => {
   const env = c.env
   const id = env.LIKE_COUNTER.idFromName('counter')
   const stub = env.LIKE_COUNTER.get(id)
@@ -27,7 +27,7 @@ counter.post('/counter/increment', async (c) => {
   }
 })
 
-counter.post('/counter/decrement', async (c) => {
+counter.post('/decrement', async (c) => {
   const env = c.env
   const id = env.LIKE_COUNTER.idFromName('counter')
   const stub = env.LIKE_COUNTER.get(id)
