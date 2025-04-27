@@ -9,7 +9,9 @@ counter.get('/', async (c) => {
   const counterValue = await stub.getCounterValue()
   console.log('counterValue: ', typeof counterValue)
   return c.json({
-    value: counterValue
+    ret: 0,
+    err: '',
+    data: counterValue,
   })
 })
 
@@ -18,7 +20,11 @@ counter.post('/counter/increment', async (c) => {
   const id = env.LIKE_COUNTER.idFromName('counter')
   const stub = env.LIKE_COUNTER.get(id)
   const value = await stub.increment()
-  return c.text(value.toString())
+  return {
+    ret: 0,
+    err: '',
+    data: value,
+  }
 })
 
 counter.post('/counter/decrement', async (c) => {
@@ -26,7 +32,11 @@ counter.post('/counter/decrement', async (c) => {
   const id = env.LIKE_COUNTER.idFromName('counter')
   const stub = env.LIKE_COUNTER.get(id)
   const value = await stub.decrement()
-  return c.text(value.toString())
+  return {
+    ret: 0,
+    err: '',
+    data: value,
+  }
 })
 
 
