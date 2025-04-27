@@ -1,9 +1,17 @@
 import { Hono } from 'hono'
+import LikeCounter from './models/LikeCounter'
 import user from './modules/user'
+import counter from './modules/counter'
 
-const app = new Hono().basePath('/api')
+export { LikeCounter }
+
+type Bindings = {
+  LIKE_COUNTER: DurableObjectNamespace<LikeCounter>
+}
+
+const app = new Hono<{ Bindings: Bindings }>().basePath('/api')
 
 app.route('/users', user)
-
+app.route('/counter', counter)
 
 export default app
